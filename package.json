@@ -1,0 +1,18 @@
+{
+  "name": "nubecitacdn",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "build": "bun build src/index.ts --outdir dist --target bun --minify",
+    "start": "bun dist/index.js"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.7.2",
+    "bun-pty": "^0.3.2",
+    "cloudflared": "^0.7.1",
+    "hono": "^4.9.1"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
