@@ -1,12 +1,24 @@
-import { Hono } from 'hono'
-import { websocket } from 'hono/bun'
-import { router } from './routes/index.js'
-const app = new Hono()
+import { serve } from "bun";
+import { websocket } from "hono/bun";
+import { router } from "./routes/index.js";
+import index from "./views/index.html";
 
-const port: any = process.env.PORT || 3000;
-app.route('/', router);
-export default {
-  fetch: app.fetch,
+const server = serve({
+  routes: {
+    "/api/*": async (req) => {
+      const resp = await router.fetch(req, server);
+      return resp;
+    },
+    "/*": index,
+  },
+
+  development: process.env.NODE_ENV !== "production" && {
+    hmr: true,
+    console: true,
+  },
+
   websocket,
-  port: port
-}
+  port: process.env.PORT || 3000,
+});
+
+console.log(`🚀 Choclo running at ${server.url}`);

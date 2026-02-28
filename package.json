@@ -10,9 +10,13 @@
     "@hono/zod-validator": "^0.7.2",
     "bun-pty": "^0.3.2",
     "cloudflared": "^0.7.1",
-    "hono": "^4.9.1"
+    "hono": "^4.9.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3"
   }
 }

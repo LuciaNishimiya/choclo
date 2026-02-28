@@ -9,7 +9,6 @@ export const terminalHandler = upgradeWebSocket((c) => {
       terminal.onData((data: any) => {
         ws.send(data)
       })
-      terminal.write('clear\n')
     },
     onMessage(event, ws) {
       terminal.write(event.data.toString())
