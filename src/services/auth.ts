@@ -10,9 +10,9 @@ export const verifyPassword = (userPassword: string, hashedPassword: string) =>
 
 
 export const generateToken = async (JwtSecret: SignatureKey, payload: any) => {
-  return await sign(payload, JwtSecret)
+  return await sign(payload, JwtSecret, 'HS256')
 }
 
 export const validateToken = async (JwtSecret: SignatureKey, token: string) => {
-  return await verify(token, JwtSecret)
+  return await verify(token, JwtSecret, 'HS256')
 }
