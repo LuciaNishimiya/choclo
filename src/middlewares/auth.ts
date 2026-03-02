@@ -2,8 +2,7 @@ import type { Context, Next } from 'hono'
 import { jwt, verify } from 'hono/jwt'
 import { secureHeaders } from 'hono/secure-headers'
 import { getSecret } from '../services/jwt.js'
-const JwtSecret = await getSecret() || process.env.JWT_SECRET
-
+const JwtSecret = process.env.JWT_SECRET || await getSecret() 
 export const secureHeadersMiddleware = secureHeaders()
 export async function authMiddleware(c: Context, next: Next) {
     const jwtMiddleware = jwt({
