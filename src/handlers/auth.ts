@@ -20,8 +20,8 @@ export const registerHandler = async (c: Context) => {
 
 export const loginHandler = async (c: Context) => {
 
-  const expirationHours: any = process.env.JWT_EXPIRATION_HOURS;
-  const JwtSecret:any =  await getSecret() || process.env.JWT_SECRET
+  const expirationHours: any = process.env.JWT_EXPIRATION_HOURS || 5;
+  const JwtSecret:any = process.env.JWT_SECRET  || await getSecret()
   const { username, password } = await c.req.json()
   if (!username || !password) { 
     return c.json({ error: 'Required username and password' }, 400)
